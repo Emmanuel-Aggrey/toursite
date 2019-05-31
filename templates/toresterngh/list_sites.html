@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <p class="text-capitalize text-center">all tourist sites</p>
+
+<nav class="breadcrumb">
+    <a class="breadcrumb-item" href="{% url 'toristSite' %}">home</a>
+  
+    <a class="breadcrumb-item active" href="{% url  'toristSite' %}">Tourst Sites</a>
+    
+    {% comment %} <span class="breadcrumb-item"></span> {% endcomment %}
+</nav> -->
+
+
+
+{%  for allToristSite in  all_ToristSite %}
+
+
+<a href="{%  url 'aboutSites' allToristSite.id  %}">
+
+
+
+    <div class="container-fluid text-center">
+       <div class="row" style="margin-top: 6%">
+           <div class="col-md-4 col-lg-4 col-xl-4">
+               <div class="thumbnail">
+                    <div class="card" style="align-items: center;justify-content: center">
+                            <div class="card-body">
+                                <h5 class="card-title text-capitalize text-danger display-4">{{ allToristSite.name }}</h5>
+                                <p class="card-text"></p>
+                            </div>
+                            <img class="card-img-top img-responsive" src="{{ allToristSite.image.url }}  " alt="{{ allToristSite.name }} image" style="height: 300px; width: auto;">
+                        </div>
+               </div>
+             
+                    <p>{{ allToristSite.detail|truncatechars:200 }} ... </p>
+                    <a href="{%  url 'abouthotel' allToristSite.id  %}" class="badge badge-primary ">view more</a>
+           </div>
+       </div>
+    </div>
+</a>
+
+<!-- -->
+
+
+{% endfor %}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+
+{% endblock content %}
+
+
+

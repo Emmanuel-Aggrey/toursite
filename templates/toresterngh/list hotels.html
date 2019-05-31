@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p class="text-capitalize text-center">all hotels</p>
+
+<nav class="breadcrumb">
+    <a class="breadcrumb-item" href="{% url 'toristSite' %}">home</a>
+  
+    <a class="breadcrumb-item active" href="{% url  'hotels' %}">Hotels</a>
+    
+    {% comment %} <span class="breadcrumb-item"></span> {% endcomment %}
+</nav>
+
+
+
+{%  for allToristSite in  all_ToristSite %}
+
+
+
+
+
+<a href="{%  url 'abouthotel' allToristSite.id  %}">
+
+
+    <div class="container text-center">
+      <div class="row" style="margin-top: 6%">
+          <div class="col-md-4">
+              <div class="thumbnail">
+                    <div class="card " style="align-items: center;justify-content: center">
+                            <div class="card-body">
+                                <h5 class="card-title text-capitalize text-danger display-4">{{ allToristSite.name }}</h5>
+                                <p class="card-text"></p>
+                            </div>
+                            <img class="card-img-bottom img-responsive" src="{{ allToristSite.image.url }}  " alt="{{ allToristSite.name }} image" style="height: 200px; width: auto">
+                        </div>
+                         <p>{{ allToristSite.detail|truncatechars:400 }} ...</p>
+                        <a href="{%  url 'abouthotel' allToristSite.id  %}" class="badge badge-primary">view more</a>
+              </div>
+          </div>
+      </div>
+    </div>
+</a>
+{% endfor %}
+
+
+
+
+
+{% endblock content %}
+
+

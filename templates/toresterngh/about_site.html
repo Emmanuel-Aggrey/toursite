@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+    <nav class="breadcrumb display-4">
+        <a class="breadcrumb-item" href="{% url 'toristSite' %}">back</a>
+     
+       
+        <a class="breadcrumb-item active" href="#">site</a>
+        <!-- <span class="breadcrumb-item"></span> -->
+    </nav>
+    
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div id="logoCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators black">
+      <li data-target="#logoCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#logoCarousel" data-slide-to="1"></li>
+      <li data-target="#logoCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        
+      <div class="item active">
+        {% if abouthotel.image1 %}
+        <img src="{{  abouthotel.image1.url }}" style="height: 300px; width: 300px">
+        {% endif %}
+        <div class="carousel-caption">
+          <h3>Caption {{ abouthotel.name }}</h3>
+        </div>
+      </div>
+
+      <div class="item ">
+        {% if abouthotel.image3 %}
+        <img src="{{  abouthotel.image3.url }} " alt="not available {{ abouthotel.name }}" style="height: 300px; width: 300px">
+        {% endif %}
+        <div class="carousel-caption">
+          <h3>Caption {{ abouthotel.name }}</h3>
+        </div>
+      </div>
+
+      <div class="item">
+       
+         {% if abouthotel.image2 %}
+        <img src="{{  abouthotel.image2.url }}" style="height: 300px; width: 300px">
+        {% endif %}
+           <div class="carousel-caption">
+          <h3>Caption {{ abouthotel.name }} </h3>
+        </div>
+      </div>
+
+    <a class="left carousel-control" href="#logoCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#logoCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+    
+  </div>
+</div>
+</div>
+
+
+
+{% comment %} end of carousel {% endcomment %}
+
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* The grid: Three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 50px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+}
+
+.containerTab {
+  padding: 20px;
+  color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Closable button inside the container tab */
+.closebtn {
+  float: right;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div style="text-align:center">
+  <h2 class="text-capitalize">{{ abouthotel.name }}</h2>
+  <p>Click on the boxes below:</p>
+</div>
+
+<!-- Three columns -->
+<div class="row">
+  <div class="column" onclick="openTab('b1');" style="background: green;">
+    Info
+  </div>
+  <div class="column" onclick="openTab('b2');" style="background:blue;">
+Contact
+  </div>
+  <div class="column" onclick="openTab('b3');" style="background:red;">
+    Map
+  </div>
+</div>
+
+<!-- Full-width columns: (hidden by default) -->
+<div id="b1" class="containerTab" style="display:none;background:green">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Info</h2>
+  <p class="lead">{{ abouthotel.detail }}</p>
+</div>
+
+<div id="b2" class="containerTab" style="display:none;background:blue">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Contact</h2>
+ <a class="text-info" href="tel:+233 {{  abouthotel.phone }}"><p class="lead"> <i class="fa fa-phone fa-2x" aria-hidden="true"></i> {{ abouthotel.phone }}</p></a>
+<a class="text-info" href="https://wa.me/+233 54 076 1703"> <p> <i class="fab fa-whatsapp  fa-2x"></i> whatsapp</p></a>
+<p class="text-info">  <i class="fab fa-facebook-square fa-2x"></i> facebook</p>
+</div>
+
+<div id="b3" class="containerTab" style="display:none;background:red">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <h2>Map</h2>
+  {% comment %} map settings {% endcomment %}
+  <p class="lead"> <i class="fa fa-map-marker" aria-hidden="true"></i> {{ abouthotel.mymap }}</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.469545783884!2d-0.2712585500591676!3d6.067235595584753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf4040e86db011%3A0x1bfb8ad4db6b2978!2sCapital+View+Hotel%2C+Koforidua.!5e0!3m2!1sen!2sgh!4v1559174122536!5m2!1sen!2sgh" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+
+<script>
+function openTab(tabName) {
+  var i, x;
+  x = document.getElementsByClassName("containerTab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+</script>
+
+<div class="container text-center">
+  <br>
+  <a  class="btn btn-block btn btn-outline-info" href="{% url 'booking' %}"><h4>book for site</h4> </a><hr>
+
+ 
+  
+
+<h1>Nearest Hotels</h1><hr>
+
+
+{% for near_hotel in near_hotels %}
+
+<ul class="list-unstyled">
+<a href="{% url 'hotels' %}">
+  <li>  {{ near_hotel.name }}  </li>  
+</a>
+ 
+<!-- <a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a> -->
+
+
+</ul>
+
+{% empty %}
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+{% endblock content %}
+
