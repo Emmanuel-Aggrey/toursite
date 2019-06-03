@@ -8,12 +8,14 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = [
+            'user_name',
             'name',
             'children',
             'adult',
             'check_in',
             'check_out',
             'email',
+            'request_guiid',
         ]
         widgets = {
         # 'check_out': forms.DateField(format("%b %d %Y")),

@@ -11,7 +11,7 @@ class Category(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ['name']  
+        # ordering = ['name']  
 
 
 class Hotel(Category):
@@ -19,6 +19,10 @@ class Hotel(Category):
 
 class Attraction(Category):     
     pass   
+    class Meta:
+        verbose_name = 'Toursit Site'
+        verbose_name_plural = 'Tourist Site'
+    
 
 
 class Food(Category):   
@@ -33,7 +37,7 @@ class TouristSite(Category):
 # ADDITIONAL INFO MODEL TO CATEGORY
 class MoreInfo(models.Model):
     image = models.ImageField(upload_to='info_images')
-    detail= models.TextField()
+    detail= models.TextField(blank=True,null=True)
     phone = models.CharField(blank=True,null=True,help_text='optional',max_length=100) 
     mymap = models.CharField(max_length=100,blank=True,null=True,help_text='dont mind will work on it later')
     date= models.DateTimeField(auto_now_add=True)
@@ -66,7 +70,7 @@ class HotelInfo(MoreInfo):
 
 
 class AttractionInfo(MoreInfo):
-    name = models.OneToOneField(Hotel,on_delete=models.CASCADE,help_text='select hotel ')
+    name = models.OneToOneField(Attraction,on_delete=models.CASCADE,help_text='select Attraction')
  
 
     class Meta:
@@ -85,12 +89,12 @@ class FoodInfo(MoreInfo):
 
 
 class Tourist_Site_Info(MoreInfo):
-    name = models.OneToOneField(TouristSite,on_delete=models.CASCADE,help_text='select hotel ')
-    nearesthotel = models.ManyToManyField(Hotel)
+    name = models.OneToOneField(Attraction,on_delete=models.CASCADE,help_text='select tourist site ')
+    nearesthotel = models.ManyToManyField(Hotel,blank=True)
 
     class Meta:
      
         verbose_name = 'About Tourist Site'
-        verbose_name_plural = 'About Tourist Site'
+        verbose_name_plural = 'About Tourist Sites'
 
 

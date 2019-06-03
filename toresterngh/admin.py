@@ -26,16 +26,18 @@ class DisplayTourist_Site_Info(admin.ModelAdmin):
     list_filter = ['name','phone']
     search_fields = ['name','phone']
 
-# REGISTERING CATEGORIES MODEL
-admin.site.register(Hotel)
-admin.site.register(Attraction)
-admin.site.register(Food)
-admin.site.register(TouristSite)
 
 
 # INFO MODELS
 admin.site.register(HotelInfo,DisplayHotelInfo)
-admin.site.register(AttractionInfo,DisplayAttractionInfo)
-admin.site.register(FoodInfo,DisplayFooodInfo)
+# admin.site.register(AttractionInfo,DisplayAttractionInfo)
+# admin.site.register(FoodInfo,DisplayFooodInfo)
 admin.site.register(Tourist_Site_Info,DisplayTourist_Site_Info)
+
+# REGISTERING CATEGORIES MODEL
+admin.site.register(Hotel)
+admin.site.register(Attraction)
+# admin.site.register(Food)
+# admin.site.register(TouristSite)
+
 

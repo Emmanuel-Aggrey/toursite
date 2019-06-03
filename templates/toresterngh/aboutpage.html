@@ -3,18 +3,24 @@
 
 
 {% block content %}
-<hr>
-<div class="container my-4">
+ <nav class="breadcrumb">
+            <a class="breadcrumb-item display-4 " href="{% url 'home' %}"><b>home</b></a>
+            <!-- <a class="breadcrumb-item" href="#">si</a> -->
+            <!-- <span class="breadcrumb-item active"></span> -->
+        </nav>
+<div class="container my-4" style="border-style: groove;">
+
     <div class="row">
         <div class="row">
             <div class="card text-left">
               <img class="card-img-top" src="{% static 'img/IMG-20190530-WA0010.jpg'  %}" alt="">
               <div class="card-body">
-                <h4 class="card-title text-muted">About Estern Tour </h4>
+                <h4 class="card-title ">About Eastern Region </h4>
                 <p class="card-text">
                     <div class="card">
-                        <div class="body text-capitalise">
+                        <div class="body text-capitalise text-muted">
 
+       <p>
         The Eastern Region of Ghana is a rich blend of dramatic landscapes, historic relics and traditional cultures. The ancient blends with the 20th century in this region so close to but such a contrast with Accra.
 
         The region is dominated by Lake Volta, one of the world’s largest man-made lakes, and the Akosombo Dam, source of much of Ghana’s hydroelectric power. Both are worth a visit. A favourite excursion is the weekend trip to Dodi Islands.
@@ -45,17 +51,32 @@
         ETHNIC GROUPS & LANGUAGE
         
         The Eastern Region consists of the Akwapim, Akyem, Kwahu, Krobo and Guans and each ethnic group has its own distinct, language festival practices.
+       </p>
                         </div>
                     </div>
                 </p>
+                <hr>
+                <p class="display-4 text-info"> <u>map of Eastern Region</u></p>
+ <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d977880.3988524595!2d-0.8916792215723538!3d6.454759833736108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfd930440cc0ef5f%3A0x2e121736feab7f16!2sEastern+Region!5e0!3m2!1sen!2sgh!4v1559407047292!5m2!1sen!2sgh" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+ <style>
+ .body{
+     color: darkmagenta;
+ }
+ </style>
               </div>
-            </div>
+              
+            </div>   
+        
+            
+        
         </div>
+
 
 
     </div>
 </div>
- 
+
 {% endblock content %}
 
 {% static 'img/IMG-20190530-WA0010.jpg'  %}

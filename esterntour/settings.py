@@ -25,7 +25,7 @@ SECRET_KEY = 'ikaa^3!lcal93%6+^@6zgk07w+ir!7trev*3*0+9cui&v7f+9l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.190.107']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'ticket',
     'crispy_forms',
     'tracking',
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

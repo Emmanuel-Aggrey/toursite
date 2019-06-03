@@ -1,0 +1,83 @@
+<nav class="breadcrumb">
+	
+	<a class="breadcrumb-item " href="{%  url 'home'%}">home</a>
+	<a class="breadcrumb-item active" href="{%  url 'booking' %}">back</a>
+	<!-- <span class="breadcrumb-item active"></span> -->
+</nav>
+
+<h4 class="text-center my-4"> Available Tour Guids </h4>
+{% for alltourguids in  tourguids %}
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+.btn{border-radius: 0;}
+.btn-md {
+border-width: 0;
+outline: none;
+border-radius: 0;
+box-shadow: 2px 2px 2px rgba(0, 0, 0, .6);
+cursor: pointer;
+}    
+    h3 {text-align: center;margin:40px;}
+</style>
+<body>
+<!-- <h3 class="headalign"> Available  </h3> -->
+<hr>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12">
+     <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+            <div class="card-block">
+			  <div class="row">
+            				<div class="col-md-8 col-sm-8">
+					<h2 class="card-title">Name: {{ alltourguids.t_name }}</h2>
+					<p class="card-text"><strong> Available: </strong> {{ alltourguids.available }} </p>
+					<p class="card-text"><strong> <em>About</em> : <br> </strong> {{ alltourguids.about }} </p>
+					{% comment %} <p><strong>Platform: </strong>
+						<span class="badge bg-primary">WordPress</span> 
+						<span class="badge bg-info">Weebly</span>
+						<span class="badge bg-warning">Bootstrap</span>
+						<span class="badge bg-success">Wix</span> {% endcomment %}
+					</p>
+				</div>
+			  <div class="col-md-4 col-sm-4 text-center">
+                    {% if alltourguids.image %}
+                    <img class="btn-md" src="{{ alltourguids.image.url }}" alt="not available" style="border-radius:50%;height: 200; width:auto;">
+                    {% endif %}
+				</div>         
+				<!-- <div class="col-md-4 col-sm-4 text-center">
+					<h2><strong> 5.2K </strong></h2>                    
+					<p><small>Fans</small></p>
+					<button class="btn btn-primary btn-block btn-md"><span class="fa fa-facebook-square"></span> Like  </button>
+				</div>
+				<div class="col-md-4 col-sm-4 text-center">
+					<h2><strong>1.4K</strong></h2>                    
+					<p><small>Following</small></p>
+					<button class="btn btn-success btn-block btn-md"><span class="fa fa-twitter-square"></span> Tweet </button>
+				</div>
+				<div class="col-md-4 col-sm-4 text-center">
+					<h2><strong>3.8K</strong></h2>                    
+					<p><small>Followers</small></p>
+					<button type="button" class="btn btn-danger btn-block btn-md"><span class="fa fa-google-plus-square"></span> Follow </button>  
+				</div> -->
+			  </div>
+              </div>
+          </div>
+  </div>
+  </div> 
+  <hr>
+  <hr>
+</div>
+
+
+
+
+
+
+
+
+
+{% endfor %}

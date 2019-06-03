@@ -18,16 +18,31 @@
         
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
- {% include  'partials/navbar.html'%}
+ {% comment %} {% include  'partials/navbar.html'%} {% endcomment %}
+ <br>
+ 
+ <!-- carowsel -->
+{% include 'partials/new_carowsel.html' %}
+ 
+
+
+
+ <!-- carowsel -->
 <br><hr>
 </head>
  
 {% for message in messages  %}
 
-<div class="alert alert-{{ message.tags}} " role="alert">
-    <strong>{{ message.message}} </strong>
-</div>
+<div class="alert alert-{{ message.tags}} alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Close</span>
+  </button>
+  <strong> hello {{ request.user.username }} </strong> {{ message.message }}
+</div>  
+
 {% endfor %}
+
 
 <body>
   
@@ -51,3 +66,12 @@
 </body>
 
 </html>
+
+
+<!-- 
+
+<div id="message" class="alert alert-{{ message.tags}} " role="alert">
+    <strong>{{ message.message}} </strong>
+</div>
+
+ -->

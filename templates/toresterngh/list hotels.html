@@ -5,27 +5,34 @@
 <p class="text-capitalize text-center">all hotels</p>
 
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="{% url 'toristSite' %}">home</a>
+    <a class="breadcrumb-item" href="{% url 'home' %}">home</a>
   
     <a class="breadcrumb-item active" href="{% url  'hotels' %}">Hotels</a>
     
     {% comment %} <span class="breadcrumb-item"></span> {% endcomment %}
 </nav>
 
+<!-- 
+ <form method="GET" action="">
+
+  <input class="my-4" type="text" name="keyword" id="" placeholder="search" value="{{ request.GET.keyword }}">
+  <button type="submit">search</button> -->
+
 
 
 {%  for allToristSite in  all_ToristSite %}
-
-
-
-
 
 <a href="{%  url 'abouthotel' allToristSite.id  %}">
 
 
     <div class="container text-center">
+
+
+   
+    
+
       <div class="row" style="margin-top: 6%">
-          <div class="col-md-4">
+          <div class="col-12">
               <div class="thumbnail">
                     <div class="card " style="align-items: center;justify-content: center">
                             <div class="card-body">
@@ -33,20 +40,22 @@
                                 <p class="card-text"></p>
                             </div>
                             <img class="card-img-bottom img-responsive" src="{{ allToristSite.image.url }}  " alt="{{ allToristSite.name }} image" style="height: 200px; width: auto">
+                        <br>
                         </div>
-                         <p>{{ allToristSite.detail|truncatechars:400 }} ...</p>
+                         <p>{{ allToristSite.detail|truncatechars:200  }} </p>
                         <a href="{%  url 'abouthotel' allToristSite.id  %}" class="badge badge-primary">view more</a>
               </div>
           </div>
       </div>
     </div>
 </a>
+
 {% endfor %}
 
 
 
 
-
+ </form>
 {% endblock content %}
 
 

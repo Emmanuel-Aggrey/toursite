@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import BookingForm,Booking
+from .models import Tour_Guid
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mass_mail
@@ -20,9 +21,11 @@ def takeBooking(request):
 
         # mass mail
         email_from = settings.EMAIL_HOST_USER
-        message1 = ('Hello', f'a user have booked for { tour_site_name } with { children } children and { adult} sign in to admin panel for for info', email_from, ['aggrey.en@live.com', 'aggrey.en@gmail.com',])
-        message2 = ('Placed booked for ' f'{ tour_site_name }',' your request have been made will call u soon we promise to make your stay a joyful one', email_from, [email ,])
-        send_mass_mail((message1, message2), fail_silently=False)
+        message_from = ('Hello', f'a user have booked for { tour_site_name } with { children } children and { adult} adults sign in to admin panel for for info', email_from, ['aggrey.en@live.com', 'aggrey.en@gmail.com',])
+        message_to = ('Placed booked for ' f'{ tour_site_name }',' your request have been made will call u soon we promise to make your stay a joyful one', email_from, [email ,])
+        # send_mass_mail((message_from, message_to), fail_silently=False)
+
+  
 
         return redirect('toristSite')
     # addbooking = BookingForm()
@@ -30,4 +33,16 @@ def takeBooking(request):
     # send message
    
     return render(request, 'bookings/addbooking.html' ,{ 'addbooking' : addbooking})
+
+
+def toureGuids(request):
+        tourguid = Tour_Guid.objects.filter(available=True)
+       
+        
+        context = {
+            'tourguids': tourguid,
+        }
+        return render(request, 'bookings/tourguids.html',context)
+
+
 

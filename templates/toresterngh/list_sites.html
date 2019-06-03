@@ -12,18 +12,27 @@
     {% comment %} <span class="breadcrumb-item"></span> {% endcomment %}
 </nav> -->
 
-
+<nav class="breadcrumb">
+        <a class="breadcrumb-item display-4 " href="{% url 'home' %}"><b>back</b></a>
+        <!-- <a class="breadcrumb-item" href="#">si</a> -->
+        <!-- <span class="breadcrumb-item active"></span> -->
+    </nav>
 
 {%  for allToristSite in  all_ToristSite %}
+
 
 
 <a href="{%  url 'aboutSites' allToristSite.id  %}">
 
 
 
+
     <div class="container-fluid text-center">
+
+      
+
        <div class="row" style="margin-top: 6%">
-           <div class="col-md-4 col-lg-4 col-xl-4">
+           <div class="col-12">
                <div class="thumbnail">
                     <div class="card" style="align-items: center;justify-content: center">
                             <div class="card-body">
@@ -31,11 +40,12 @@
                                 <p class="card-text"></p>
                             </div>
                             <img class="card-img-top img-responsive" src="{{ allToristSite.image.url }}  " alt="{{ allToristSite.name }} image" style="height: 300px; width: auto;">
+                               <br>
                         </div>
                </div>
              
                     <p>{{ allToristSite.detail|truncatechars:200 }} ... </p>
-                    <a href="{%  url 'abouthotel' allToristSite.id  %}" class="badge badge-primary ">view more</a>
+                    <a href="{%  url 'aboutSites' allToristSite.id  %}" class="badge badge-primary ">view more</a>
            </div>
        </div>
     </div>
@@ -45,13 +55,11 @@
 
 
 {% endfor %}
-.card {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
-}
+
+<style>
 
 
+</style>
 
 {% endblock content %}
 
