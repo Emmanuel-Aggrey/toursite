@@ -34,7 +34,7 @@ def homepage(request):
             email_from = settings.EMAIL_HOST_USER
             message_from = ('Hello', f' a user with name { username } and id { user_id } is to visit { place_name } today, you can sign in to admin for more info search user by username or id thank you', email_from, ['aggrey.en@live.com',])
             message_to = ('Hello ' f'{ username }',f' your appointment to visit { place_name } is today { currentDT } thank you  ', email_from, [user_email ,])
-            # send_mass_mail((message_from, message_to), fail_silently=False)
+            send_mass_mail((message_from, message_to), fail_silently=False)
     
     return render(request,'toresterngh/home.html')
 

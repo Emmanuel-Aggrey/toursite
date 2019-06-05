@@ -11,8 +11,8 @@ class Tour_Guid(models.Model):
 
     class Meta:
         
-        verbose_name = 'Tour Guid'
-        verbose_name_plural = 'Tour Guids'
+        verbose_name = 'Tour Guide'
+        verbose_name_plural = 'Tour Guides'
 
     def __str__(self):
         return self.t_name
@@ -25,7 +25,7 @@ class Booking(models.Model):
     adult = models.PositiveSmallIntegerField('number of adult',default=0,null=True)
     check_in = models.DateField()
     check_out = models.DateTimeField()
-    request_guiid = models.OneToOneField(Tour_Guid,on_delete=models.DO_NOTHING,null=True,blank=True,help_text='optional select a tour guid')
+    request_guiid = models.OneToOneField(Tour_Guid,on_delete=models.DO_NOTHING,null=True,blank=True,help_text='optional select a tour guid',verbose_name='Request Guide')
     message_sent = models.BooleanField(default=False)
     email = models.EmailField(help_text= 'enter your email that we can reach you with',null=True)
     dateadd = models.DateTimeField(auto_now_add=True)
